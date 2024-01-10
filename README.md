@@ -1,2 +1,2 @@
-# resizeImageWithElectron
-Work with (NodeJS + frontend).
+# passwordGen
+Password generator on Vue3. Work with browser version of Vue.
