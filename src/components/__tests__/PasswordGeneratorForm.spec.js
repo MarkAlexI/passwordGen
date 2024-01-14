@@ -6,6 +6,6 @@ import PasswordGeneratorForm from '../PasswordGeneratorForm.vue'
 describe('PasswordGeneratorForm', () => {
   it('renders properly', () => {
     const wrapper = mount(PasswordGeneratorForm)
-    expect(wrapper.text()).toContain('There will be form.')
+    expect(wrapper.text()).toContain('Password length:')
   })
 })
