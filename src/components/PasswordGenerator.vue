@@ -5,8 +5,22 @@ import GeneratedPasswordDisplay from './GeneratedPasswordDisplay.vue';
 </script>
 
 <template>
-  <div>
+  <div class="password-app">
     <PasswordGeneratorForm />
     <GeneratedPasswordDisplay />
   </div>
 </template>
+
+<style scoped lang="scss">
+.password-app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+
+  & > * {
+    margin-bottom: 1.25rem;
+  }
+}
+</style>
