@@ -32,12 +32,16 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue';
+/*  import { ref } from 'vue';
   const passwordLength = ref(8);
   const includeUppercase = ref(true);
   const includeNumbers = ref(true);
   const generatedPassword = ref('');
   const generatePassword = () => generatedPassword.value = 'passw0rd';
+*/
+import usePasswordGenerator from '../composition/usePasswordGenerator';
+
+const { passwordLength, includeUppercase, includeNumbers, generatedPassword, generatePassword } = usePasswordGenerator();
 </script>
 
 <style scoped lang="scss">
