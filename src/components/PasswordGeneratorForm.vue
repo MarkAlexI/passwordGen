@@ -5,7 +5,8 @@
       <input
         class="form-control"
         type="number"
-        v-model="passwordLength"
+        :value="passwordLength"
+        @input="$emit('update:passwordLength', $event.target.value)"
         min="6"
         max="20"
       </input>
@@ -14,34 +15,37 @@
       <label for="includeUppercase">Include uppercase:</label>
       <input
         type="checkbox"
-        v-model="includeUppercase"
+        :value="includeUppercase"
+        @input="$emit('update:includeUppercase', $event.target.value)"
       </input>
     </div>
     <div class="form-group">
       <label for="includeNumbers">Include numbers:</label>
       <input
         type="checkbox"
-        v-model="includeNumbers"
+        :value="includeNumbers"
+        @input="$emit('update:includeNumbers', $event.target.value)"
       </input>
     </div>
     <button
       @click="generatePassword"
     >Generate Password</button>
-    <p>{{ generatedPassword }}</p>
   </div>
 </template>
 
 <script setup>
-/*  import { ref } from 'vue';
-  const passwordLength = ref(8);
-  const includeUppercase = ref(true);
-  const includeNumbers = ref(true);
-  const generatedPassword = ref('');
-  const generatePassword = () => generatedPassword.value = 'passw0rd';
-*/
-import usePasswordGenerator from '../composition/usePasswordGenerator';
+defineProps([
+  'passwordLength',
+  'includeUppercase',
+  'includeNumbers',
+  'generatePassword'
+]);
 
-const { passwordLength, includeUppercase, includeNumbers, generatedPassword, generatePassword } = usePasswordGenerator();
+defineEmits([
+  'update:passwordLength',
+  'update:includeUppercase',
+  'update:includeNumbers'
+]);
 </script>
 
 <style scoped lang="scss">

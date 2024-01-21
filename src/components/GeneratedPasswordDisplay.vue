@@ -1,9 +1,10 @@
 <template>
   <div>
-    There will be result.
+    <strong>Generated Password:</strong>
+    <p>{{ generatedPassword }}</p>
   </div>
 </template>
 
 <script setup>
-  console.log('display');
+defineProps(['generatedPassword']);
 </script>

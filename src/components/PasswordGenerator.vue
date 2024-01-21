@@ -1,13 +1,28 @@
 <script setup>
 import PasswordGeneratorForm from './PasswordGeneratorForm.vue';
 import GeneratedPasswordDisplay from './GeneratedPasswordDisplay.vue';
-  console.log('setup');
+import usePasswordGenerator from '../composition/usePasswordGenerator';
+
+const {
+  passwordLength,
+  includeUppercase,
+  includeNumbers,
+  generatedPassword,
+  generatePassword
+} = usePasswordGenerator();
 </script>
 
 <template>
   <div class="password-app">
-    <PasswordGeneratorForm />
-    <GeneratedPasswordDisplay />
+    <PasswordGeneratorForm
+      :passwordLength="passwordLength"
+      :includeUppercase="includeUppercase"
+      :includeNumbers="includeNumbers"
+      :generatePassword="generatePassword"
+    />
+    <GeneratedPasswordDisplay
+      :generatedPassword="generatedPassword"
+    />
   </div>
 </template>
 
