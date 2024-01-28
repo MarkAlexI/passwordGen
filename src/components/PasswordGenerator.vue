@@ -7,6 +7,7 @@ const {
   passwordLength,
   includeUppercase,
   includeNumbers,
+  includeSpecialChars,
   generatedPassword,
   generatePassword
 } = usePasswordGenerator();
@@ -18,6 +19,7 @@ const {
       :passwordLength="passwordLength"
       :includeUppercase="includeUppercase"
       :includeNumbers="includeNumbers"
+      :includeSpecialChars="includeSpecialChars"
       :generatePassword="generatePassword"
     />
     <GeneratedPasswordDisplay

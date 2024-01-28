@@ -27,6 +27,14 @@
         @input="$emit('update:includeNumbers', $event.target.value)"
       </input>
     </div>
+    <div class="form-group">
+      <label for="includeSpecialChars">Include special chars:</label>
+      <input
+        type="checkbox"
+        :value="includeSpecialChars"
+        @input="$emit('update:includeSpecialChars', $event.target.value)"
+      </input>
+    </div>
     <button
       @click="generatePassword"
     >Generate Password</button>
@@ -38,13 +46,15 @@ defineProps([
   'passwordLength',
   'includeUppercase',
   'includeNumbers',
+  'includeSpecialChars',
   'generatePassword'
 ]);
 
 defineEmits([
   'update:passwordLength',
   'update:includeUppercase',
-  'update:includeNumbers'
+  'update:includeNumbers',
+  'update:includeSpecialChars'
 ]);
 </script>
 
