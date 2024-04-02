@@ -6,5 +6,5 @@
 </template>
 
 <script setup>
-defineProps(['generatedPassword']);
+defineProps(["generatedPassword"]);
 </script>

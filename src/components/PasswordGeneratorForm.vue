@@ -5,7 +5,7 @@
       <input
         class="form-control"
         type="number"
-        :value="passwordLength"
+        :value.number="passwordLength"
         @input="$emit('update:passwordLength', $event.target.value)"
         min="6"
         max="20"
@@ -15,24 +15,24 @@
       <label for="includeUppercase">Include uppercase:</label>
       <input
         type="checkbox"
-        :value="includeUppercase"
-        @input="$emit('update:includeUppercase', $event.target.value)"
+        :checked="includeUppercase"
+        @change.prevent="$emit('update:includeUppercase', $event.target.checked)"
       </input>
     </div>
     <div class="form-group">
       <label for="includeNumbers">Include numbers:</label>
       <input
         type="checkbox"
-        :value="includeNumbers"
-        @input="$emit('update:includeNumbers', $event.target.value)"
+        :checked="includeNumbers"
+        @change.prevent="$emit('update:includeNumbers', $event.target.checked)"
       </input>
     </div>
     <div class="form-group">
       <label for="includeSpecialChars">Include special chars:</label>
       <input
         type="checkbox"
-        :value="includeSpecialChars"
-        @input="$emit('update:includeSpecialChars', $event.target.value)"
+        :checked="includeSpecialChars"
+        @change.prevent="$emit('update:includeSpecialChars', $event.target.checked)"
       </input>
     </div>
     <button
@@ -43,23 +43,23 @@
 
 <script setup>
 defineProps([
-  'passwordLength',
-  'includeUppercase',
-  'includeNumbers',
-  'includeSpecialChars',
-  'generatePassword'
+  "passwordLength",
+  "includeUppercase",
+  "includeNumbers",
+  "includeSpecialChars",
+  "generatePassword"
 ]);
 
 defineEmits([
-  'update:passwordLength',
-  'update:includeUppercase',
-  'update:includeNumbers',
-  'update:includeSpecialChars'
+  "update:passwordLength",
+  "update:includeUppercase",
+  "update:includeNumbers",
+  "update:includeSpecialChars"
 ]);
 </script>
 
 <style scoped lang="scss">
-@import '../assets/base.css';
+@import "../assets/base.css";
 
 .password-form {
   max-width: 300px;

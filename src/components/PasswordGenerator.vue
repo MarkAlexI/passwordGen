@@ -1,7 +1,7 @@
 <script setup>
-import PasswordGeneratorForm from './PasswordGeneratorForm.vue';
-import GeneratedPasswordDisplay from './GeneratedPasswordDisplay.vue';
-import usePasswordGenerator from '../composition/usePasswordGenerator';
+import PasswordGeneratorForm from "./PasswordGeneratorForm.vue";
+import GeneratedPasswordDisplay from "./GeneratedPasswordDisplay.vue";
+import usePasswordGenerator from "../composition/usePasswordGenerator";
 
 const {
   passwordLength,
