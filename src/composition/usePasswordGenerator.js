@@ -1,10 +1,6 @@
 import { ref } from "vue";
 
-export default function usePasswordGenerator() {
-  const passwordLength = ref(12);
-  const includeUppercase = ref(true);
-  const includeNumbers = ref(true);
-  const includeSpecialChars = ref(false);
+export default function usePasswordGenerator(passwordLength, includeUppercase, includeNumbers, includeSpecialChars) {
   const generatedPassword = ref("");
 
   const generatePassword = () => {
@@ -28,10 +24,6 @@ export default function usePasswordGenerator() {
   };
 
   return {
-    passwordLength,
-    includeUppercase,
-    includeNumbers,
-    includeSpecialChars,
     generatedPassword,
     generatePassword,
   };
