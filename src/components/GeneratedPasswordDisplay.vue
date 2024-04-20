@@ -6,5 +6,11 @@
 </template>
 
 <script setup>
-defineProps(["generatedPassword"]);
+  defineProps(["generatedPassword"]);
 </script>
+
+<style scoped lang="scss">
+  p {
+    word-break: break-all;
+  }
+</style>
