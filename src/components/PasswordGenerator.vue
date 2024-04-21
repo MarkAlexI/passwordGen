@@ -56,7 +56,6 @@ const updateIncludeSpecialChars = (newValue) => {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
 
   & > * {
     margin-bottom: 1.25rem;

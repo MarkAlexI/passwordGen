@@ -84,6 +84,18 @@ defineEmits([
     }
   }
 
+  @media only screen and (max-width: 768px) {
+    .form-group:not(:first-child) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  input, button {
+    font-size: 2rem;
+  }
+
   button {
     display: block;
     width: 100%;

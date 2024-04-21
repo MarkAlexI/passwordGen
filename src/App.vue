@@ -4,7 +4,7 @@ import PasswordGenerator from './components/PasswordGenerator.vue'
 
 <template>
   <header>
-    <div class="wrapper">
+    <div>
       <h1>Password generator</h1>
     </div>
   </header>
@@ -20,8 +20,7 @@ import PasswordGenerator from './components/PasswordGenerator.vue'
 header {
   line-height: 1.5;
   text-align: center;
-  display: flex;
-  justify-content: center;
+  display: block;
   color: var(--color-text);
 }
 </style>

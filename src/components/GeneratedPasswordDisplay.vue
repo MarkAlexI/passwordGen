@@ -11,6 +11,8 @@
 
 <style scoped lang="scss">
   p {
+    text-align: center;
+    color: blue;
     word-break: break-all;
   }
 </style>
