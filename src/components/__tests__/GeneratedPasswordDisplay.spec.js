@@ -6,6 +6,7 @@ import GeneratedPasswordDisplay from '../GeneratedPasswordDisplay.vue'
 describe('GeneratedPasswordDisplay', () => {
   it('renders properly', () => {
     const wrapper = mount(GeneratedPasswordDisplay)
-    expect(wrapper.text()).toContain('There will be result.')
+    expect(wrapper.text()).toContain('Generated Password:Copy!')
   })
 })
+

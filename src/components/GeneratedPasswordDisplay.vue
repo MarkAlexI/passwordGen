@@ -14,27 +14,29 @@
   const props = defineProps(["generatedPassword"]);
 
   let copyPassword = () => {
-    console.log("#");
+    console.log("Don't have permissions to write on clipboard!");
   };
 
-  navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
-    if (result.state == "granted" || result.state == "prompt") {
-      alert("Write access granted!");
+  if (navigator.permissions?.query) {
+    navigator.permissions.query({ name: "clipboard-write" }).then((result) => {
+      if (result.state == "granted" || result.state == "prompt") {
+        alert("Write access granted!");
 
-      let text = props.generatedPassword;
+        let text = props.generatedPassword;
 
-      copyPassword = async () => {
-        try {
-          await navigator.clipboard.writeText(text);
-          console.log("Content copied to clipboard");
-        } catch (error) {
-          console.error("Failed to copy: ", err);
-        }
-      };
-    }
-  }).catch((error) => {
-    console.log(error);
-  });
+        copyPassword = async () => {
+          try {
+            await navigator.clipboard.writeText(text);
+            console.log("Content copied to clipboard");
+          } catch (error) {
+            console.error("Failed to copy: ", err);
+          }
+        };
+      }
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
 </script>
 
 <style lang="scss">
