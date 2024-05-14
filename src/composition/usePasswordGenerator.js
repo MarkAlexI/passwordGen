@@ -14,11 +14,7 @@ export default function usePasswordGenerator(passwordLength, includeUppercase, i
     if (includeNumbers.value) chars += numberChars;
     if (includeSpecialChars.value) chars += specialChars;
 
-    let password = "";
-    for (let i = 0; i < passwordLength.value; i++) {
-      const randomIndex = Math.floor(Math.random() * chars.length);
-      password += chars[randomIndex];
-    }
+    const password = Array.from({ length: passwordLength.value }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 
     generatedPassword.value = password;
   };
