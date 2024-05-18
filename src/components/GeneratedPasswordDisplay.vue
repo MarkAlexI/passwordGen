@@ -42,7 +42,7 @@
           } catch (error) {
             copyStatus.value = "Failed to copy content!";
             copyStatusClass.value = "error";
-            console.error("Failed to copy: ", err);
+            console.error("Failed to copy: ", error);
           }
         };
       }
