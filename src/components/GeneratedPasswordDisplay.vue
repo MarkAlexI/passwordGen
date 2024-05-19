@@ -1,7 +1,9 @@
 <template>
   <div>
     <strong>Generated Password:</strong>
-    <p>{{ generatedPassword }}</p>
+    <p
+      ref="passwordText"
+    >{{ generatedPassword }}</p>
     <button
       class="copy-btn"
       @click="copyPassword"
@@ -20,9 +22,31 @@
 
   const copyStatus = ref("");
   const copyStatusClass = ref("");
+  const passwordText = ref(null);
 
   let copyPassword = () => {
     console.log("Don't have permissions to write on clipboard!");
+    const range = document.createRange();
+    range.selectNode(passwordText.value);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+
+    try {
+      const successful = document.execCommand('copy');
+      if (successful) {
+        copyStatus.value = "Content copied to clipboard!";
+        copyStatusClass.value = "success";
+        console.log("Content copied to clipboard");
+      } else {
+        throw new Error("Copy command was unsuccessful");
+      }
+    } catch (error) {
+      copyStatus.value = "Failed to copy content!";
+      copyStatusClass.value = "error";
+      console.error("Failed to copy: ", error);
+    } finally {
+      window.getSelection().removeAllRanges();
+    }
   };
 
   if (navigator.permissions?.query) {
