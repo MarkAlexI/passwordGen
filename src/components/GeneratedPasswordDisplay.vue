@@ -4,10 +4,16 @@
     <p
       ref="passwordText"
     >{{ generatedPassword }}</p>
-    <button
-      class="copy-btn"
-      @click="copyPassword"
-    >Copy!</button>
+    <div class="controls">
+      <button
+        class="copy-btn"
+        @click="copyPassword"
+      >Copy!</button>
+      <button
+        class="share-btn"
+        @click="sharePassword"
+      >Share!</button>
+    </div>
     <p
       v-if="copyStatus"
       :class="copyStatusClass"
@@ -23,6 +29,24 @@
   const copyStatus = ref("");
   const copyStatusClass = ref("");
   const passwordText = ref(null);
+
+  const sharePassword = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Generated Password',
+        text: `Here is your generated password: ${props.generatedPassword}`,
+        url: window.location.href // Or any other relevant URL
+      })
+      .then(() => {
+        console.log('Password shared successfully');
+      })
+      .catch((error) => {
+        console.error('Error sharing:', error);
+      });
+    } else {
+      console.error('Web Share API is not supported in this browser.');
+    }
+  };
 
   let copyPassword = () => {
     console.log("Don't have permissions to write on clipboard!");
@@ -93,15 +117,22 @@ $error-color: #f44336;
 
 p {
   text-align: center;
-  color: $light-text-color;
   word-break: break-all;
 }
 
-.copy-btn {
+.controls {
+  width: 20rem;
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.copy-btn, .share-btn {
   background: $dark-bg;
   border: solid 1px $dark-btn-border;
   border-radius: $btn-border-radius;
   font: inherit;
+  color: $light-text-color;
   padding: $btn-padding;
   margin-bottom: $btn-margin;
   margin-left: auto;
