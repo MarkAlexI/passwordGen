@@ -4,7 +4,9 @@
     <p
       ref="passwordText"
     >{{ generatedPassword }}</p>
-    <div class="controls">
+    <div
+      v-if="passLength"
+      class="controls">
       <button
         class="copy-btn"
         @click="copyPassword"
@@ -22,7 +24,7 @@
 </template>
 
 <script setup>
-  import { ref, watch } from "vue";
+  import { ref, watch, computed } from "vue";
 
   const props = defineProps(["generatedPassword"]);
 
@@ -33,18 +35,18 @@
   const sharePassword = () => {
     if (navigator.share) {
       navigator.share({
-        title: 'Generated Password',
+        title: "Generated Password",
         text: `Here is your generated password: ${props.generatedPassword}`,
-        url: window.location.href // Or any other relevant URL
+        url: window.location.href
       })
       .then(() => {
-        console.log('Password shared successfully');
+        console.log("Password shared successfully");
       })
       .catch((error) => {
-        console.error('Error sharing:', error);
+        console.error("Error sharing: ", error);
       });
     } else {
-      console.error('Web Share API is not supported in this browser.');
+      console.error("Web Share API is not supported in this browser.");
     }
   };
 
@@ -98,6 +100,10 @@
       console.log(error);
     });
   }
+
+  const passLength = computed(() => {
+    return props.generatedPassword.length > 0;
+  });
 
   watch(() => props.generatedPassword, () => {
     copyStatus.value = "";
