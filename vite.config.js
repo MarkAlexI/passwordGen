@@ -3,6 +3,7 @@ import { fileURLToPath, URL } from 'node:url'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { VitePWA } from 'vite-plugin-pwa'
+import terser from '@rollup/plugin-terser'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,28 +13,31 @@ export default defineConfig({
       registerType: 'autoUpdate',
       injectRejister: 'auto',
         manifest: {
-    name: 'Password generator',
-    short_name: 'PassGen',
-    theme_color: 'teal',
-    icons: [
-      {
-        src: 'pwa-192x192.png',
-        sizes: '192x192',
-        type: 'image/png',
+          name: 'Password generator',
+          short_name: 'PassGen',
+          theme_color: 'teal',
+        icons: [
+          {
+            src: 'pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+          },
+          {
+            src: 'pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: ['any', 'maskable'],
+          },
+        ],
       },
-      {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-      },
-      {
-        src: 'pwa-512x512.png',
-        sizes: '512x512',
-        type: 'image/png',
-        purpose: ['any', 'maskable'],
-      },
-    ],
-  },
+    }),
+    terser({
+      maxWorkers: 1
     }),
   ],
   resolve: {

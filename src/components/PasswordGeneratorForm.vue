@@ -5,19 +5,19 @@
       <input
         class="form-control"
         type="number"
-        :value.number="passwordLength"
-        @input="$emit('update:passwordLength', $event.target.value)"
+        :value="passwordLength"
+        @input="$emit('update:passwordLength', Number($event.target.value))"
         min="6"
         max="20"
-      </input>
+      />
     </div>
     <div class="form-group">
       <label for="includeUppercase">Include uppercase:</label>
       <input
         type="checkbox"
         :checked="includeUppercase"
-        @change.prevent="$emit('update:includeUppercase', $event.target.checked)"
-      </input>
+        @change="$emit('update:includeUppercase', $event.target.checked)"
+      />
     </div>
     <div class="form-group">
       <label for="includeNumbers">Include numbers:</label>
@@ -25,7 +25,7 @@
         type="checkbox"
         :checked="includeNumbers"
         @change.prevent="$emit('update:includeNumbers', $event.target.checked)"
-      </input>
+      />
     </div>
     <div class="form-group">
       <label for="includeSpecialChars">Include special chars:</label>
@@ -33,10 +33,10 @@
         type="checkbox"
         :checked="includeSpecialChars"
         @change.prevent="$emit('update:includeSpecialChars', $event.target.checked)"
-      </input>
+      />
     </div>
     <button
-      @click="generatePassword"
+      @click.prevent="generatePassword"
     >Generate Password</button>
   </div>
 </template>
