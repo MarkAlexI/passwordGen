@@ -1,0 +1,1 @@
+!function(){"use strict";self.onmessage=function(e){const{passwordLength:s,includeUppercase:n,includeNumbers:t,includeSpecialChars:a}=e.data;let o="abcdefghijklmnopqrstuvwxyz";n&&(o+="ABCDEFGHIJKLMNOPQRSTUVWXYZ"),t&&(o+="0123456789"),a&&(o+="#$_&%(){}[]");const c=Array.from({length:s},(()=>o[Math.floor(Math.random()*o.length)])).join("");self.postMessage(c)}}();

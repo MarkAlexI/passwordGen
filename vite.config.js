@@ -12,10 +12,10 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRejister: 'auto',
-        manifest: {
-          name: 'Password generator',
-          short_name: 'PassGen',
-          theme_color: 'teal',
+      manifest: {
+        name: 'Password generator',
+        short_name: 'PassGen',
+        theme_color: 'teal',
         icons: [
           {
             src: 'pwa-192x192.png',
@@ -44,5 +44,8 @@ export default defineConfig({
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
+  },
+  build: {
+    minify: 'terser'
   }
 })
