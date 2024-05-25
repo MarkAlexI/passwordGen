@@ -11,7 +11,7 @@ export default defineConfig({
     vue(),
     VitePWA({
       registerType: 'autoUpdate',
-      injectRejister: 'auto',
+      injectRejister: 'script',
       manifest: {
         name: 'Password generator',
         short_name: 'PassGen',
@@ -35,6 +35,11 @@ export default defineConfig({
           },
         ],
       },
+      workbox: {
+        globPatterns: [
+          '**/*.{js,css,html,ico,png,svg}'
+        ]
+      }
     }),
     terser({
       maxWorkers: 1
@@ -47,5 +52,9 @@ export default defineConfig({
   },
   build: {
     minify: 'terser'
-  }
+  },
+  server: {
+    host: 'localhost',
+    port: 3000,
+  },
 })

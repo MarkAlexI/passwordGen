@@ -1,6 +1,16 @@
-import './assets/main.css'
+import "./assets/main.css";
 
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
+import { registerSW } from "virtual:pwa-register";
 
-createApp(App).mount('#app')
+const updateSW = registerSW({
+  onNeedRefresh() {
+    console.log("SW: Need Refresh");
+  },
+  onOfflineReady() {
+    console.log("SW: Offline Ready");
+  },
+});
+
+createApp(App).mount("#app");
